@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ajax用モジュール読み込み -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <title>数字認識</title>
+
+  <style>
+    /* MSのIE11、iOS等でドラッグ時に画面が揺れないようにする */
+    canvas#drawcanvas {
+      -ms-touch-action: none;
+      touch-action: none;
+    }
+  </style>
+
+  <script type="text/javascript" src="{{ url_for('draw.static', filename='draw.js') }}"></script>
+</head>
+
+<body>
+  <div>
+    <canvas id="drawcanvas" width="400px" height="400px" style="border:1px solid #000;"></canvas>
+  </div>
+  <input type="button" value="認識" onclick="send_img()" style="width:160px;height:60px;" data-inline="true">
+  <input type="button" id="clearCanvas" value="クリア" style="width:160px;height:60px;" data-inline="true">
+  <input type="button" id="eraser" value="消しゴム" onclick="color(0)" style="width:160px;height:60px;" data-inline="true">
+  <input type="button" id="pensil" value="鉛筆" onclick="color(1)" style="width:160px;height:60px;" data-inline="true" disabled="true">
+
+  
+  <!-- <p>test{{iresult}}</p>
+
+  {% if iresult==-1 %} 
+    <p>result:</p>
+  {% elif iresult==-2 %}
+    <p>can't recognize!</p>
+  {% else %}
+    <p>resultt:{{iresult}}</p>
+  {% endif %} -->
+  <font size="7"><div id="result"></div></font>
+  
+</body>
+</html>
